@@ -1,0 +1,65 @@
+\documentclass[12pt]{exam}
+\usepackage[
+  letterpaper,
+  margin=0.3in,
+  includehead,    % include the header area in the 0.25in margin
+  includefoot     % include the footer area in the 0.25in margin
+]{geometry}
+\usepackage[shortlabels]{enumitem}
+\setlist[enumerate,1]{label=(\alph*)} %makes list alphabetic
+
+\usepackage{physics}
+
+\usepackage{pgfplots} % For sketching graphs
+\pgfplotsset{compat=1.18}
+
+
+\usepackage{caption}
+
+\title{Introduction to Quantum Mechanics - Solution Manual \newline \small{For Griffiths and Schroeter's Third Edition}}
+
+\author{Justin Beltran}
+\date{May 2025}
+
+\begin{document}
+
+\maketitle
+\firstpagefooter{}{}{By Justin Beltran}
+\runningfooter{}{}{By Justin Beltran}
+\printanswers
+
+\section{Chapter 1}
+
+
+
+\subsection*{Problem 1.1}
+For the distribution of ages in the example in Section 1.3.1
+\begin{enumerate}[(a)]
+    \item  Compute $\expval{j^2}$ and $\expval{j}^2$
+
+    \item Determine $\Delta j$ for each $j$, and use Equation 1.11 to compute the standard deviation.
+
+    \item Use your results in (a) and (b) to check Equation 1.12
+\end{enumerate}
+
+\begin{solution}
+    \begin{enumerate}[(a)]
+        \item There is one person aged 14, one person aged 15, three people aged 16, two people aged 22, two people aged 24, five people aged 25 then 
+        $$\expval{j^2} = \sum_j j^2 P(j) = 14^2(\frac{1}{14}) + 15^2(\frac{1}{14}) + 16^2(\frac{3}{14})+ 22^2(\frac{2}{14})+ 24^2(\frac{2}{14})+ 25^2(\frac{5}{14})$$
+        $$= \frac{196}{14} + \frac{225}{14}+ \frac{768}{14}+ \frac{968}{14}+ \frac{1152}{14}+ \frac{3125}{14} = \frac{6434}{14} = 459.57$$
+        and 
+        $$\expval{j}^2 =  \big[\sum_j j^ P(j) = 14(\frac{1}{14}) + 15(\frac{1}{14}) + 16(\frac{3}{14})+ 22(\frac{2}{14})+ 24(\frac{2}{14})+ 25(\frac{5}{14})\big]^2$$
+        $$= \big[ \frac{14}{14}+ \frac{15}{14} + \frac{48}{14} + \frac{44}{14} + \frac{48}{14} + \frac{125}{14}\big]^2 = \big[\frac{294}{14}\big]^2 = 21^2 = 441$$
+
+        \item $\expval{j}=21$ then $\Delta j_{14} = 14-21 = -7$, $\Delta j_{15} = 15-21 = -6$, $\Delta j_{16} = 16-21 = -5$,  $\Delta j_{22} = 22-21 = 1$, $\Delta j_{24} = 24-21 = 3$, $\Delta j_{25} = 25-21 = 4$.  Plugging into 1.11 $$\sigma^2 = \expval{(\Delta j)^2}  = (-7)^2(\frac{1}{14}) + (-6)^2(\frac{1}{14}) + (-5)^2(\frac{3}{14})+ 1^2(\frac{2}{14})+ 3^2(\frac{2}{14})+ 4^2(\frac{5}{14})$$ 
+        $$
+        = 49(\frac{1}{14}) + 36(\frac{1}{14}) + 25(\frac{3}{14})+ (\frac{2}{14})+ 9(\frac{2}{14})+ 16(\frac{5}{14})= \frac{259}{14} = 18.57 \implies\sigma = 4.31$$
+
+        \item Equation 1.12 states $\sigma = \sqrt{\expval{j^2}-\expval{j}^2}$ so plugging in answers from part (a) yields $\sigma =\sqrt{459.57-441} = 18.57$ which is as expected.
+    \end{enumerate}
+\end{solution}
+
+
+
+
+\end{document}
