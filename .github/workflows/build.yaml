@@ -16,5 +16,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           name: Draft ${{ env.TIMESTAMP }}
-          files: solutions.pdf
+          files: Intro-to-QM/solutions.pdf
           draft: true
