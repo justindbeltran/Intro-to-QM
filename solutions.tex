@@ -306,6 +306,36 @@ Consider the wave function $\Psi(x,t) = Ae^{-\lambda|x|}e^{-i\omega t}$ where $A
 
 
 
+\subsection*{Problem 1.6}
+Why can't you do integration-py-parts directly on the middle expression in Equation 1.29-pull the time derivative over onto $x$, note that $\frac{dx}{dt}=0$, and conclude that $d\expval{x}/dt=0$?
+
+\begin{solution}
+    Equation 1.29 states $\frac{d\expval{x}}{dt} = \int x\frac{d}{dt}|\Psi|^2dx$ with the the third expression omitted. Previously in Equation 1.28 $\expval{x}$ is defined as 
+    $$ \expval{x}  = \int x|\Psi|^2dx \implies \frac{d}{dt}\expval{x} = \int \frac{d}{dt}\bigg[x|\Psi|^2\bigg]dx \implies \frac{d\expval{x}}{dt} = \int \frac{dx}{dt}|\Psi|^2 + x\frac{d}{dt}|\Psi|^2dx.$$
+    Where $d/dt$ is passed through the integral and the product rule is taken and note that $dx/dt = 0$ so that term drops, confirming Equation 1.29. However integration by parts is not allowed because the differentiation is w.r.t $t$ and the integrand would be w.r.t $x$ and these would need to be the same.
+\end{solution}
+
+
+
+\subsection*{Problem 1.7}
+Calculate $d\expval{p}/dt$. \textit{Answer:} $\frac{d\expval{p}}{dt} = \expval{-\frac{dV}{dx}}$. This is an instance of \textbf{Ehrenfest's theorem}, which asserts that \textit{expectation values obey the classical laws}. 
+
+\begin{solution}
+    $$\expval{p} = m\frac{d\expval{x}}{dt} = -i\hbar \int \big(\Psi^*\frac{d\Psi}{dx}\big)dx \implies \frac{d}{dt}\expval{p} = -i\hbar \int \frac{d}{dt}\big(\Psi^*\frac{d\Psi}{dx}\big)dx = -i\hbar \int \bigg(\frac{d\Psi^*}{dt}\frac{d\Psi}{dx} + \Psi^*\frac{d^2\Psi}{dxdt}\bigg)dx$$
+    
+    Now note $\frac{d\Psi}{dt} = \frac{i\hbar}{2m}\frac{d^2\Psi}{dx^2} - \frac{i}{\hbar}V\Psi$ and the complex conjugate is $\frac{d\Psi^*}{dt} = \frac{-i\hbar}{2m}\frac{d^2\Psi^*}{dx^2} + \frac{i}{\hbar}V\Psi^*$ plugging both in gives
+    $$\frac{d\expval{p}}{dt} = -i\hbar \int \bigg(\bigg[\frac{-i\hbar}{2m}\frac{d^2\Psi^*}{dx^2} + \frac{i}{\hbar}V\Psi^*\bigg]\frac{d\Psi}{dx} + \Psi^*\frac{d}{dx}\bigg[\frac{i\hbar}{2m}\frac{d^2\Psi}{dx^2} - \frac{i}{\hbar}V\Psi\bigg]\bigg)dx $$
+    $$= -i\hbar \int \bigg(\frac{-i\hbar}{2m}\frac{d^2\Psi^*}{dx^2}\frac{d\Psi}{dx} + \frac{i}{\hbar}V\Psi^*\frac{d\Psi}{dx} + \Psi^*\frac{d}{dx}\frac{i\hbar}{2m}\frac{d^2\Psi}{dx^2} - \Psi^*\frac{d}{dx}\frac{i}{\hbar}V\Psi\bigg)dx$$
+    
+    $$= -i\hbar \int \frac{-i\hbar}{2m}\frac{d^2\Psi^*}{dx^2}\frac{d\Psi}{dx} dx -i\hbar \int \Psi^*\frac{i\hbar}{2m}\frac{d^3\Psi}{dx^3} dx  -i\hbar \int\frac{i}{\hbar}\bigg[V\Psi^*\frac{d\Psi}{dx}   - \Psi^*\frac{d}{dx}V\Psi\bigg]dx$$
+
+    $$=  \frac{-\hbar^2}{2m}\int \frac{d^2\Psi^*}{dx^2}\frac{d\Psi}{dx}dx + \frac{\hbar^2}{2m}\int\Psi^*\frac{d^3\Psi}{dx^3} dx + \int\bigg[V\Psi^*\frac{d\Psi}{dx}   - \Psi^*\frac{dV}{dx}\Psi -\Psi^*V\frac{d\Psi}{dx}\bigg]dx$$ 
+    since $\Psi*$ and $\Psi$ vanish at $\pm \infty$ two integration-by-parts yields
+    
+    $$=  \frac{-\hbar^2}{2m}\int \frac{d^2\Psi^*}{dx^2}\frac{d\Psi}{dx}dx + \frac{\hbar^2}{2m} \bigg[\int \frac{d^2\Psi^*}{dx^2}\frac{d\Psi}{dx}dx - \Psi^*\frac{d^2\Psi}{dx^2}\bigg|^\infty_{-\infty} + \frac{d\Psi^*}{dx}\frac{d\Psi}{dx}\bigg|^\infty_{-\infty}\bigg]+ \int\bigg[ - \Psi^*\frac{dV}{dx}\Psi \bigg]dx$$
+    $$\frac{d\expval{p}}{dt} = \int -\frac{dV}{dx}|\Psi|^2 = \expval{-\frac{dV}{dx}}$$
+\end{solution}
+
 
 
 
