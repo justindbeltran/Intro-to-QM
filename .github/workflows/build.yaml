@@ -18,3 +18,13 @@ jobs:
           name: Draft ${{ env.TIMESTAMP }}
           files: Intro-to-QM/solutions.pdf
           draft: true
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{secrets.TOKEN}}
+        with:
+          upload_url: ${{steps.create_release.outputs.upload_url}} 
+          asset_path: ${{env.FILE_PATH}}${{env.FILE_NAME}}.pdf
+          asset_name: ${{env.RESULT_NAME}}.pdf
+          asset_content_type: application/pdf
