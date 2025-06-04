@@ -337,6 +337,23 @@ Calculate $d\expval{p}/dt$. \textit{Answer:} $\frac{d\expval{p}}{dt} = \expval{-
 \end{solution}
 
 
+\subsection*{Problem 1.8}
+Suppose you add a constant $V_0$ to the potential energy (by "constant" I mean independent of $x$ as well as $t$). In \textit{classical} mechanics this doesn't change anything, but what about \textit{quantum} mechanics? Show that the wave function picks up a time-dependent phase factor: $\exp(-iV_0t/\hbar)$. What effect does this have on the expectation value of a dynamical variable?
+
+\begin{solution}
+    Adding a constant $V_0$ to the Schrodinger equation gives 
+    $$i\hbar\frac{d\Psi}{dt} = -\frac{\hbar^2}{2m}\frac{d^2\Psi}{dx^2}+V\Psi \implies i\hbar\frac{d\Psi_0}{dt} = -\frac{\hbar^2}{2m}\frac{d^2\Psi_0}{dx^2}+(V+V_0)\Psi_0$$
+    Then let the solution $\Psi \implies \Psi \exp(-iV_0/\hbar) = \Psi_0$ plugging this in to the Schrodinger equation with a constant gives
+    $$i\hbar\frac{d\Psi_0}{dt}=i\hbar\bigg[\frac{d\Psi}{dt}e^{-iV_0t/\hbar} + \Psi \frac{d}{dt}e^{-iV_0t/\hbar}\bigg] = i\hbar\bigg[\frac{d\Psi}{dt}e^{-iV_0t/\hbar} - \Psi \frac{iV_0}{\hbar}e^{-iV_0t/\hbar}\bigg]$$
+    noting that $\frac{d\Psi}{dt} = \frac{i\hbar}{2m}\frac{d^2\Psi}{dx^2} - \frac{i}{\hbar}V\Psi$ then 
+    $$= i\hbar\bigg[\big(\frac{i\hbar}{2m}\frac{d^2\Psi}{dx^2} - \frac{i}{\hbar}V\Psi \big)e^{-iV_0t/\hbar} - \Psi \frac{iV_0}{\hbar}e^{-iV_0t/\hbar}\bigg]  = 
+    i\hbar\bigg[\frac{i\hbar}{2m}\frac{d^2\Psi}{dx^2}e^{-iV_0t/\hbar} - \frac{i}{\hbar}V\Psi e^{-iV_0t/\hbar} -\frac{iV_0}{\hbar} \Psi e^{-iV_0t/\hbar}\bigg] $$
+
+    $$= 
+    \frac{-\hbar^2}{2m}\frac{d^2\Psi}{dx^2}e^{-iV_0t/\hbar} +V\Psi e^{-iV_0t/\hbar} +V_0 \Psi_0 =  \frac{-\hbar^2}{2m}\frac{d^2\Psi_0}{dx^2} +V\Psi_0 +V_0 \Psi_0 = -\frac{\hbar^2}{2m}\frac{d^2\Psi_0}{dx^2}+(V+V_0)\Psi_0$$
+    where $\frac{d^2\Psi}{dx^2}$ absorbed $\exp(-iV_0t/\hbar)$ because $\exp(-iV_0t/\hbar)$ is independent of $x$ and the EV of the dynamical variable $\expval{Q(x,p)} = \int \Psi^* \big[Q(x,-i\hbar \frac{d}{dx})\big] \Psi dx$ is unaffected because again $e^{-iV_0t/\hbar}$ is  independent of $x$.
+\end{solution}
+
 
 
 
