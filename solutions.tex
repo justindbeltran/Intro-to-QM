@@ -357,5 +357,66 @@ Suppose you add a constant $V_0$ to the potential energy (by "constant" I mean i
 
 
 
+\subsection*{Problem 1.9}
+A particle of mass $m$ has the wave function $$\Psi(x,t) = Ae^{-a[(mx^2/\hbar)+it]}$$
+where $A$ and $a$ are positive real constants.
+\begin{enumerate}
+    \item Find A.
+    \item For what potential energy function, $V(x)$ is this a solution to the Schrodinger equation?
+    \item Calculate the expectation values $x$, $x^2$, $p$, and $p^2$
+    \item Find $\sigma_x$ and $\sigma_p$. Is their product consistent with the uncertainty principle?
+\end{enumerate}
+
+\begin{solution}
+    \begin{enumerate}
+        \item Using $\int |\Psi|^2 = 1$ find 
+        $$
+        1 = \int^\infty_{-\infty} |\Psi(x,t)|dx = 2\int^\infty_0 |\Psi(x,t)|dx = 2|A|^2\int^\infty_0 e^{-a[(mx^2/\hbar)+it]} e^{-a[(mx^2/\hbar)-it]}$$ 
+        where the integral is folded to avoid the limit of integration $-\infty$  from becoming unbounded and is allowed by the symmetry of $\Psi$. Continuing
+        $$
+        = 2|A|^2\int^\infty_0 e^{-a(mx^2/\hbar)}e^{-ait} e^{-a(mx^2/\hbar)}e^{ait} = 2|A|^2\int^\infty_0 e^{-2a(mx^2/\hbar)} 
+        = 2|A|^2\bigg[\sqrt{\pi}\frac{1}{2}\sqrt{\frac{\hbar}{2am}}\frac{1}{2}\bigg] \implies
+        $$
+        
+        $$
+        |A|^2 = \sqrt{\frac{2am}{\hbar\pi}} \implies A = \sqrt[4]{\frac{2am}{\hbar\pi}}
+        $$
+
+        \item Plugging $\frac{d\Psi}{dt} = -ai\Psi$ and $\frac{d^2\Psi}{dx^2} = \big[ \frac{4a^2m^2x^2}{\hbar^2} -\frac{2am}{\hbar}\big]\Psi$ into the Schrodinger equation $i\hbar \frac{d\Psi}{dt} = -\frac{\hbar^2}{2m}\frac{d^2\Psi}{dx^2}+V\Psi$ find
+        $$
+        i\hbar\big[-ai\Psi \big] = -\frac{\hbar^2}{2m}\bigg[ \frac{4a^2m^2x^2}{\hbar^2} -\frac{2am}{\hbar} \bigg]\Psi + V\Psi \quad \implies \quad i\hbar\big[-ai \big] + \frac{\hbar^2}{2m}\bigg[ \frac{4a^2m^2x^2}{\hbar^2}-\frac{2am}{\hbar}\bigg] = V \implies $$
+        $$
+        V = \hbar a + 2ma^2x^2 -a\hbar \quad \implies \quad V = 2ma^2x^2$$
+
+        \item \begin{enumerate}[(i)]
+            \item Starting with e.v. of $x$ note that $\Psi$ is an even function and $x$ is an odd function thus $x|\Psi|^2$ is odd which means $\expval{x} = \int x|\Psi|^2 = 0 $
+
+            \item For e.v. $x^2$ note that both are even so we can fold the integral to find 
+            $$
+            \expval{x^2} = \int^{\infty}_{-\infty} x^2|\Psi|^2 = 2\sqrt{\frac{2am}{\hbar\pi}} \int^\infty_0 x^2e^{-2amx^2/\hbar)} = \sqrt{\frac{8am}{\hbar\pi}} \bigg[ \frac{\sqrt{\pi}}{4}\bigg(\sqrt{\frac{\hbar}{2am}}\bigg)^3\bigg] = \frac{\hbar}{4am}
+            $$
+
+            \item Next from 1.33 $\expval{p} = m \frac{d\expval{x}}{dt}$ but from (i) we know $\expval{x} = 0$ thus $\expval{p} = 0$
+
+            \item From 1.35 $\expval{p} = \int \Psi^* [-i\hbar (d/dx)]\Psi dx$ which implies $\expval{p^2} = \int \Psi^* [-\hbar^2 \frac{d^2}{dx^2}] \Psi dx$ then factoring forward $-\hbar^2$ and plugging in $\frac{d^2\Psi}{dx^2} = \big[ \frac{4a^2m^2x^2}{\hbar^2} -\frac{2am}{\hbar}\big]\Psi$ yields 
+            
+            $$\expval{p^2} = -\hbar^2\int^\infty_{-\infty} \Psi^*\bigg[ \frac{4a^2m^2x^2}{\hbar^2} -\frac{2am}{\hbar}\bigg]\Psi = -\hbar^2\int^\infty_{-\infty} \frac{4a^2m^2x^2}{\hbar^2}|\Psi|^2 dx+2am\hbar \int^\infty_{-\infty} |\Psi|^2dx$$
+            $$
+            = -4a^2m^2\int^\infty_{-\infty} x^2|\Psi|^2 dx +2am\hbar = -4a^2m^2\expval{x^2} +2am\hbar = -4a^2m^2\frac{\hbar}{4am} +2am\hbar = -am\hbar +2am\hbar$$
+            $$\implies \quad \expval{p^2} = am\hbar$$
+        \end{enumerate}
+
+        \item For $\sigma_x$ using $\sigma_x^2 =\expval{x^2}-\expval{x}^2$ plug in from (c) to find $\sigma_x = \sqrt{\frac{\hbar}{4am}- 0^2} = \sqrt{\frac{\hbar}{4am}}$.
+
+        For $\sigma_p$ using $\sigma_p^2 = \expval{p^2}-\expval{p}^2$ plug in from (c) to find $\sigma_p = \sqrt{am\hbar -0^2} = \sqrt{am\hbar}$
+
+        Then their product is $\sigma_x\sigma
+        _p = \sqrt{\frac{\hbar}{4am}}\sqrt{am\hbar} = \hbar/2$ which is consistent with 1.40 $\sigma_x\sigma \geq \frac{\hbar}{2}$
+    \end{enumerate}
+\end{solution}
+
+
+
+
 
 \end{document}
