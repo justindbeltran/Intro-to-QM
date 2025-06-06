@@ -60,6 +60,8 @@ For the distribution of ages in the example in Section 1.3.1
 \end{solution}
 
 
+
+
 \subsection*{Problem 1.2}
 \begin{enumerate}[(a)]
     \item Find the standard deviation of the distribution in Example 1.2.
@@ -80,6 +82,7 @@ For the distribution of ages in the example in Section 1.3.1
         $$ = 1 - 0.795 + 0.188 = 0.393 = 39.3\%$$
     \end{enumerate}
 \end{solution}
+
 
 
 
@@ -148,6 +151,8 @@ Consider the \textbf{gaussian} distribution $\rho(x) = Ae^{-\lambda(x-a)^2}$ whe
 
     \end{enumerate}
 \end{solution}
+
+
 
 
 \subsection*{Problem 1.4}
@@ -222,6 +227,7 @@ and $0$ otherwise, where $A$, $a$, and $b$ are positive constants.
         $$\expval{x} = \frac{b}{4}+\frac{a}{2}$$
     \end{enumerate}
 \end{solution}
+
 
 
 
@@ -306,6 +312,7 @@ Consider the wave function $\Psi(x,t) = Ae^{-\lambda|x|}e^{-i\omega t}$ where $A
 
 
 
+
 \subsection*{Problem 1.6}
 Why can't you do integration-py-parts directly on the middle expression in Equation 1.29-pull the time derivative over onto $x$, note that $\frac{dx}{dt}=0$, and conclude that $d\expval{x}/dt=0$?
 
@@ -314,6 +321,7 @@ Why can't you do integration-py-parts directly on the middle expression in Equat
     $$ \expval{x}  = \int x|\Psi|^2dx \implies \frac{d}{dt}\expval{x} = \int \frac{d}{dt}\bigg[x|\Psi|^2\bigg]dx \implies \frac{d\expval{x}}{dt} = \int \frac{dx}{dt}|\Psi|^2 + x\frac{d}{dt}|\Psi|^2dx.$$
     Where $d/dt$ is passed through the integral and the product rule is taken and note that $dx/dt = 0$ so that term drops, confirming Equation 1.29. However integration by parts is not allowed because the differentiation is w.r.t $t$ and the integrand would be w.r.t $x$ and these would need to be the same.
 \end{solution}
+
 
 
 
@@ -417,6 +425,43 @@ where $A$ and $a$ are positive real constants.
 
 
 
+
+
+\subsection*{Problem 1.10}
+Consider the first 25 digits in the decimal expansion of $\pi$ (3, 1, 4, 1, 5, 9,...)
+\begin{enumerate}
+    \item If you selected one number at random, from this set, what are the probabilities of getting each of the 10 digits?
+
+    \item What is the most probable digit? What is the median digit? What is the average value? 
+
+    \item Find the standard deviation for this distribution.
+\end{enumerate}
+
+\begin{solution}
+    \begin{enumerate}
+        \item $\pi$ = 3.141592653589793238462643 then $$
+        P(1) = \frac{2}{25}, \quad
+        P(2) = \frac{3}{25}, \quad
+        P(3) = \frac{5}{25}, \quad
+        P(4) = \frac{3}{25}, \quad
+        P(5) = \frac{3}{25}, \quad
+        $$$$
+        P(6) = \frac{3}{25}, \quad
+        P(7) = \frac{1}{25}, \quad
+        P(8) = \frac{2}{25}, \quad
+        P(9) = \frac{3}{25}, \quad
+        P(0) = \frac{0}{25} \quad$$
+
+        \item The most probable is $P(3) = \frac{5}{25}$ 
+
+        The median is $4$.
+
+        The average value $\expval{\pi_{25}} = (2 + 6 + 15 + 12 + 15 + 18 + 7 + 16 + 27 + 0)/25 = 4.72$
+
+        \item $\sigma_\pi = \sqrt{\expval{\pi_{25}^2} - \expval{\pi_{25}}^2}$ and $\expval{\pi_{25}^2} = (2 + 12 + 45 + 48  + 75 + 108 + 49 + 128 + 243 + 0)/25 = 28.4$ then $$\sigma_\pi = \sqrt{28.4 - 22.28} = \sqrt{6.12} = 2.47$$
+    \end{enumerate}
+    
+\end{solution}
 
 
 
